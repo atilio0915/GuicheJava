@@ -12,4 +12,13 @@ public class Guiches {
     }
     public static int quantidadeGuiches(){ return arrayGuiche.size();}
 
+    public static Guiche guichePorId(int id) {
+        for (Guiche guiche : arrayGuiche) {
+            if (guiche.id == id) {
+                return guiche;
+            }
+        }
+        return null;
+    }
+
 }

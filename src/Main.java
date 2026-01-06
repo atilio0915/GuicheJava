@@ -58,33 +58,33 @@ public class Main {
 
                 } else if (opcao == 2) {
                     if (Fila.proximoFila() != null) {
+                        if (Guiches.quantidadeGuiches() == 0) {
+                            System.out.println("Nao existe guiche cadastrado");
+                            continue;
+                        }
                         // atender o cliente
                         Cliente proximoFila = Fila.proximoFila();
                         //aqui eu vou ter q mudar e pegar o guiche q esta fazendo o atendimento
 
                         // o numero tem q ser interiro e igual o id do guiche
-                        while (true){
-                            int numero;
+                        Guiche guicheEscolhido = null;
+                        while (guicheEscolhido == null){
                             System.out.println("digite o numero do guiche ");
 
                             if(entrada.hasNextInt()){
-                                numero = entrada.nextInt();
-                                if (numero <= Guiches.quantidadeGuiches() && numero > 0 ){
-                                    if(Guiches.guicheEscolhido(numero - 1).id == numero && Guiches.guicheEscolhido(numero -1 ) != null ){
-                                        Guiche guicheEscolhido =  Guiches.guicheEscolhido(numero - 1);
-                                        guicheEscolhido.atendendo(proximoFila,numero - 1);
-                                        Fila.removerFila(proximoFila);
-                                        break;
-                                    }else {
-                                        System.out.println("Nao existe esse guiche");
-                                    }
+                                int numero = entrada.nextInt();
+                                entrada.nextLine(); // consumir o enter
+                                guicheEscolhido = Guiches.guichePorId(numero);
+                                if (guicheEscolhido == null) {
+                                    System.out.println("Nao existe esse guiche");
                                 }
                             }else {
                                 System.out.println("digite apenas um numero ");
                                 entrada.next();
                             }
-
                         }
+                        guicheEscolhido.atendendo(proximoFila);
+                        Fila.removerFila(proximoFila);
                     } else {
                         System.out.println("n tem cliente ");
                     }
@@ -92,6 +92,7 @@ public class Main {
                 } else if (opcao == 3) {
 
                     int numero;
+                    Guiche guiche;
                     do {
                         System.out.println("Numero do guiche q vai finalizar o atendimento ? ");
                         while (!entrada.hasNextInt()) {
@@ -100,16 +101,15 @@ public class Main {
                         }
 
                         numero = entrada.nextInt();
-                        if(numero <= Guiches.quantidadeGuiches()){
+                        guiche = Guiches.guichePorId(numero);
+                        if (guiche != null) {
                             break;
-                        }else {
-                            System.out.println("nao tem esse guiche, digite novamente");
                         }
+                        System.out.println("nao tem esse guiche, digite novamente");
 
 
                     }while(true);
 
-                    Guiche guiche = Guiches.guicheEscolhido(numero - 1);
                     if (guiche.pegarClienteDoGuiche() != null) {
                         // remover o cliente da fila
                         guiche.naoAtendendo();

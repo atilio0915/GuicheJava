@@ -24,13 +24,13 @@ import java.util.ArrayList;
 
 
 
-     public void atendendo(Cliente cliente, int numeroGuiche ) {
+     public void atendendo(Cliente cliente) {
 
          String nome = cliente.getNome();
          System.out.println("cliente "+ nome);
          String senha = cliente.getSenha();
          System.out.println("Senha: "+ senha);
-         System.out.println(" caixa " + Guiches.guicheEscolhido(numeroGuiche).id);
+         System.out.println(" caixa " + this.id);
          clientesGuiche.add(cliente);
          System.out.println(clientesGuiche.size());
      }
