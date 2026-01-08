@@ -4,8 +4,6 @@ Neste projeto, eu tentei representar a logica de um guiche de atendimento da UAI
 # Tecnologias usadas 
 -java
 
-# Como rodar o projeto
-
 ## Requisitos
 - Java JDK 8 ou superior
 - (Opcional) IntelliJ IDEA ou outro IDE Java
