@@ -24,10 +24,3 @@ Neste projeto, eu tentei representar a logica de um guiche de atendimento da UAI
 2) Abra o arquivo `src/Main.java`.
 3) Clique no botao de Run (ou use Shift + F10).
 
-## Como usar o programa
-Ao iniciar, escolha uma opcao do menu:
-0 - criar guiche
-1 - criar cliente
-2 - atender cliente
-3 - cliente atendido
-4 - sair
